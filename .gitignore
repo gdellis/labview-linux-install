@@ -1,0 +1,18 @@
+# Temp files
+*.tmp
+*.swp
+*.swo
+*~
+
+# Editor/IDE
+.idea/
+.vscode/
+*.sublime-*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Backup files
+*.bak
+*.orig
