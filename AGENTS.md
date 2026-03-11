@@ -189,6 +189,26 @@ shellcheck install-labview.sh
 bash -n install-labview.sh
 ```
 
+### Git Operations
+
+When creating commits, use the `/commit` skill for proper git workflow:
+
+```bash
+# The skill handles:
+# - Checking git status, diff, and recent commits
+# - Matching repo's commit message style
+# - Proper staging and committing
+# - Never amending or skipping hooks
+```
+
+### Creating Pull Requests
+
+When opening a PR, use the `/create-pr` skill which handles:
+- Checking branch status and diff
+- Searching for PR templates
+- Analyzing commits
+- Creating PR with proper title and body
+
 ---
 
 ## Important Notes
