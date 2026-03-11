@@ -137,11 +137,18 @@ Visit: <https://www.ni.com/en/support/downloads.html>
 
 ## License
 
+This project is licensed under the MIT License - see the [LICENSE](LICENSE)
+file for details.
+
 This is a community project. LabVIEW installation requires acceptance of
 NI's license terms.
 
 ## Credits
 
 - Author: Glenn Ellis <glenn@ellisdev.com>
-- Original project: <https://github.com/gdellis/labview-linux-install>
 - LabVIEW is a trademark of National Instruments (NI)
+
+## References
+
+- [NI Platform on Linux Desktop User Manual](https://www.ni.com/docs/en-US/bundle/ni-platform-on-linux-desktop/page/user-manual-welcome.html)
+- [Installing NI Drivers and Software on Linux Desktop](https://www.ni.com/docs/en-US/bundle/ni-platform-on-linux-desktop/page/installing-ni-drivers-and-software-on-linux-desktop.html)
