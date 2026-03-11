@@ -209,6 +209,14 @@ When opening a PR, use the `/create-pr` skill which handles:
 - Analyzing commits
 - Creating PR with proper title and body
 
+### Addressing PR Comments
+
+When PR review comments require code changes, use the `/address-pr-comments` skill:
+- Fetch and analyze PR comments
+- Make fixes to address each comment
+- Verify changes with tests/linters
+- Commit with message referencing the PR/issue
+
 ---
 
 ## Important Notes
