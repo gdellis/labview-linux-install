@@ -14,4 +14,3 @@ jobs:
       - uses: DavidAnson/markdownlint-cli2-action@v22
         with:
           config: '.markdownlint.json'
-          useGitIgnore: true
