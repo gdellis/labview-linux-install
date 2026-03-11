@@ -221,6 +221,7 @@ When PR review comments require code changes, use the `/address-pr-comments` ski
 
 ## Important Notes
 
+- **Never commit or push directly to main** - always use feature branches and PRs
 - This is a bash scripts project, not a compiled language
 - No automated test suite exists - validate changes manually
 - Always run `shellcheck` before committing
