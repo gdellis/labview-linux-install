@@ -1,10 +1,12 @@
 # NI LabVIEW Linux Installer
 
-A bash script for automating the installation of LabVIEW Community Edition and NI hardware drivers on Linux (Ubuntu-based distributions).
+A bash script for automating the installation of LabVIEW Community
+Edition and NI hardware drivers on Linux (Ubuntu-based distributions).
 
 ## Overview
 
 This project provides an automated way to install:
+
 - **LabVIEW Community Edition 2026** (version 26.1.0)
 - **NI Drivers** including VISA, DAQmx, and various device drivers
 
@@ -30,6 +32,7 @@ This project provides an automated way to install:
 ```bash
 git clone https://github.com/gdellis/labview-linux-install.git
 cd labview-linux-install
+chmod +x install-labview.sh
 ```
 
 ### 2. Run the installer
@@ -60,32 +63,36 @@ cd labview-linux-install
 
 ## Command Options
 
-| Option | Description |
-|--------|-------------|
-| `-h, --help` | Show help message |
-| `--cleanup` | Remove downloaded zip files after installation |
-| `--force` | Force re-download even if files exist |
+| Option      | Description                                              |
+|-------------|----------------------------------------------------------|
+| -h, --help  | Show this help message                                  |
+| --cleanup   | Remove downloaded zip files after installation          |
+| --force     | Force re-download even if files exist                   |
 
 ## Downloaded Files
 
 By default, downloaded files are stored in:
-```
+
+```text
 ~/Downloads/NI-Downloads/
 ```
 
 This includes:
+
 - LabVIEW installation zip
 - NI Linux Device Drivers zip
 
 ## What Gets Installed
 
 ### LabVIEW Packages
+
 - ni-labview-2026-desktop
 - ni-labview-vicompare
 - ni-labview-vimerge
 - ni-hwcfg-utility
 
 ### Driver Packages (partial list)
+
 - ni-visa - NI-VISA runtime
 - ni-daqmx - NI-DAQmx
 - ni-serial - NI-Serial
@@ -94,6 +101,8 @@ This includes:
 ## Usage Examples
 
 ### Full installation with cleanup
+
+Run the installer with cleanup to remove downloaded files:
 
 ```bash
 ./install-labview.sh --cleanup install_all
@@ -110,6 +119,7 @@ This includes:
 ### Package not found errors
 
 If you encounter "package not found" errors, ensure:
+
 1. Your Ubuntu version is supported (20.04+)
 2. You have an active internet connection
 3. The NI download servers are accessible
@@ -117,19 +127,30 @@ If you encounter "package not found" errors, ensure:
 ### DKMS errors
 
 After installation, run:
+
 ```bash
 sudo dkms autoinstall
 ```
 
 ### For more help
 
-Visit: https://www.ni.com/en/support/downloads.html
+- **Project issues**: [GitHub Issues](https://github.com/gdellis/labview-linux-install/issues)
+- **NI support**: <https://www.ni.com/en/support/downloads.html>
 
 ## License
 
-This is a community project. LabVIEW installation requires acceptance of NI's license terms.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE)
+file for details.
+
+This is a community project. LabVIEW installation requires acceptance of
+NI's license terms.
 
 ## Credits
 
-- Original project: https://github.com/gdellis/labview-linux-install
+- Author: Glenn Ellis <glenn@ellisdev.com>
 - LabVIEW is a trademark of National Instruments (NI)
+
+## References
+
+- [NI Platform on Linux Desktop User Manual](https://www.ni.com/docs/en-US/bundle/ni-platform-on-linux-desktop/page/user-manual-welcome.html)
+- [Installing NI Drivers and Software on Linux Desktop](https://www.ni.com/docs/en-US/bundle/ni-platform-on-linux-desktop/page/installing-ni-drivers-and-software-on-linux-desktop.html)
