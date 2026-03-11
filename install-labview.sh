@@ -29,6 +29,8 @@ load_config() {
 	while IFS= read -r line || [[ -n "$line" ]]; do
 		line="${line#"${line%%[![:space:]]*}"}"
 
+		[[ -z "$line" || "$line" =~ ^# ]] && continue
+
 		if [[ "$line" =~ ^\[([a-z]+)\]$ ]]; then
 			current_section="${BASH_REMATCH[1]}"
 			continue
@@ -50,6 +52,35 @@ load_config() {
 	done <"$config_path"
 }
 
+validate_config() {
+	local missing=()
+
+	[[ -z "${VERSION[year]:-}" ]] && missing+=("version.year")
+	[[ -z "${VERSION[quarter]:-}" ]] && missing+=("version.quarter")
+	[[ -z "${VERSION[lv_version]:-}" ]] && missing+=("version.lv_version")
+	[[ -z "${VERSION[edition]:-}" ]] && missing+=("version.edition")
+
+	if [[ ${#missing[@]} -gt 0 ]]; then
+		echo "Error: Missing required configuration values:"
+		for m in "${missing[@]}"; do
+			echo "  - $m"
+		done
+		exit 1
+	fi
+
+	local edition="${VERSION[edition]}"
+	if [[ "$edition" != "community" && "$edition" != "pro" ]]; then
+		echo "Error: Invalid edition '$edition'. Must be 'community' or 'pro'"
+		exit 1
+	fi
+
+	local quarter="${VERSION[quarter]}"
+	if [[ "$quarter" != "Q1" && "$quarter" != "Q2" && "$quarter" != "Q3" && "$quarter" != "Q4" ]]; then
+		echo "Error: Invalid quarter '$quarter'. Must be Q1, Q2, Q3, or Q4"
+		exit 1
+	fi
+}
+
 build_urls() {
 	local year="${VERSION[year]}"
 	local quarter="${VERSION[quarter]}"
@@ -58,6 +89,16 @@ build_urls() {
 
 	LV_URL="https://download.ni.com/support/softlib/labview/labview_development_system/${year}_${quarter}/ni-labview-${year}-${edition}-${lv_version}_linux.zip"
 	DRIVERS_URL="https://download.ni.com/support/softlib/MasterRepository/LinuxDrivers${year}${quarter}/NILinux${year}${quarter}DeviceDrivers.zip"
+
+	if [[ ! "$LV_URL" =~ ^https://.*\.zip$ ]]; then
+		echo "Error: Malformed LabVIEW URL: $LV_URL"
+		exit 1
+	fi
+
+	if [[ ! "$DRIVERS_URL" =~ ^https://.*\.zip$ ]]; then
+		echo "Error: Malformed drivers URL: $DRIVERS_URL"
+		exit 1
+	fi
 }
 
 substitute_vars() {
@@ -204,6 +245,7 @@ if [[ "$CONFIG_FILE" != /* ]]; then
 fi
 
 load_config "$CONFIG_FILE"
+validate_config
 
 if [[ -n "$CMD_VERSION" ]]; then
 	VERSION[year]="$CMD_VERSION"
@@ -215,6 +257,7 @@ if [[ -n "$CMD_EDITION" ]]; then
 	VERSION[edition]="$CMD_EDITION"
 fi
 
+validate_config
 build_urls
 
 test -d "$OUT_DIR" || mkdir -p "$OUT_DIR"
