@@ -1,6 +1,7 @@
 # NI LabVIEW Linux Installer
 
-A bash script for automating the installation of LabVIEW Community Edition and NI hardware drivers on Linux (Ubuntu-based distributions).
+A bash script for automating the installation of LabVIEW Community
+Edition and NI hardware drivers on Linux (Ubuntu-based distributions).
 
 ## Overview
 
@@ -61,11 +62,11 @@ cd labview-linux-install
 
 ## Command Options
 
-| Option | Description |   |
-|--------|-------------|---|
-| `-h, --help` | Show this help message |   |
-| `--cleanup` | Remove downloaded zip files after installation |   |
-| `--force` | Force re-download even if files exist |   |
+| Option      | Description                                              |
+|-------------|----------------------------------------------------------|
+| -h, --help  | Show this help message                                  |
+| --cleanup   | Remove downloaded zip files after installation          |
+| --force     | Force re-download even if files exist                   |
 
 ## Downloaded Files
 
@@ -74,7 +75,6 @@ By default, downloaded files are stored in:
 ```text
 ~/Downloads/NI-Downloads/
 ```
-
 
 This includes:
 
@@ -101,12 +101,11 @@ This includes:
 
 ### Full installation with cleanup
 
-Run the installer with cleanup to remove downloaded files after installation:
+Run the installer with cleanup to remove downloaded files:
 
 ```bash
 ./install-labview.sh --cleanup install_all
 ```
-
 
 ### Reinstall with fresh downloads
 
@@ -132,24 +131,17 @@ After installation, run:
 sudo dkms autoinstall
 ```
 
-
 ### For more help
 
 Visit: <https://www.ni.com/en/support/downloads.html>
 
 ## License
 
-This is a community project. LabVIEW installation requires acceptance of NI's license terms.
+This is a community project. LabVIEW installation requires acceptance of
+NI's license terms.
 
 ## Credits
 
+- Author: Glenn Ellis <glenn@ellisdev.com>
 - Original project: <https://github.com/gdellis/labview-linux-install>
 - LabVIEW is a trademark of National Instruments (NI)
-
-</content>
-<task_progress>
-- [x] Read existing project files to understand the project
-- [x] Create comprehensive README.md based on project functionality
-- [x] Verify the README.md is complete and accurate
-- [x] Fix markdownlint warnings in README.md
-</task_progress>
