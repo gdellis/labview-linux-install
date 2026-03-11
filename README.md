@@ -32,6 +32,7 @@ This project provides an automated way to install:
 ```bash
 git clone https://github.com/gdellis/labview-linux-install.git
 cd labview-linux-install
+chmod +x install-labview.sh
 ```
 
 ### 2. Run the installer
@@ -133,7 +134,8 @@ sudo dkms autoinstall
 
 ### For more help
 
-Visit: <https://www.ni.com/en/support/downloads.html>
+- **Project issues**: [GitHub Issues](https://github.com/gdellis/labview-linux-install/issues)
+- **NI support**: <https://www.ni.com/en/support/downloads.html>
 
 ## License
 
